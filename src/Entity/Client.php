@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @Doctrine\ORM\Mapping\Entity
@@ -26,6 +27,7 @@ class Client {
   /**
    * @var string
    * @ORM\Column(type="string")
+   * @Assert\NotBlank()
    */
   private $companyName;
 
@@ -46,8 +48,10 @@ class Client {
    */
   private $status;
 
-  /** @var string
+  /**
+   * @var string
    * @ORM\Column(type="string")
+   * @Assert\Email(message="Email is not valid")
    */
   private $email;
 

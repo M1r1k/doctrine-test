@@ -1,6 +1,7 @@
 {
   "require": {
-    "doctrine/orm": "*"
+    "doctrine/orm": "*",
+    "symfony/validator": "^3.1"
   },
   "autoload": {
     "psr-0": {"": "src/"}

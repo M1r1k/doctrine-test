@@ -12,7 +12,7 @@ try {
   $entityManager->persist($countryUA);
 }
 catch (\Exception $e) {
-  echo "validation was successful";
+  echo "validation was successful\n";
 }
 
 $countryUA = new Country();
@@ -35,6 +35,8 @@ $statusBad->setId('ooohhh')
   ->setName('Bad');
 $entityManager->persist($statusBad);
 
+
+
 $clientCL = new Client();
 $clientCL->setActionDate(time())
   ->setCompanyName('CoffeeLife')
@@ -53,7 +55,7 @@ $client3L->setActionDate(time())
   ->setType('?')
   ->setUrl('http://coffeelife.com.ua/en/');
 
-$entityManager->persist($client);
+$entityManager->persist($client3L);
 
 $clientP = new Client();
 $clientP->setActionDate(time())
@@ -64,10 +66,19 @@ $clientP->setActionDate(time())
   ->setType('?')
   ->setUrl('http://coffeelife.com.ua/en/');
 
-$entityManager->persist($client);
+$entityManager->persist($clientP);
 
+$invalidClient = new Client();
+$invalidClient->setCountry($countryDK)
+  ->setCompanyName('Papiroen')
+  ->setStatus($statusGood)
+  ->setEmail('clgmail.com')
+  ->setType('?')
+  ->setUrl('http://coffeelife.com.ua/en/');
+$violations = $validator->validate($invalidClient);
 
-
+var_dump($violations->get(0)->getMessage());
+var_dump($violations->get(0)->getPropertyPath());
 
 $entityManager->flush();
 
