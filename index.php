@@ -70,15 +70,15 @@ $entityManager->persist($clientP);
 
 $invalidClient = new Client();
 $invalidClient->setCountry($countryDK)
-  ->setCompanyName('Papiroen')
-  ->setStatus($statusGood)
+  ->setStatus($statusBad)
   ->setEmail('clgmail.com')
   ->setType('?')
   ->setUrl('http://coffeelife.com.ua/en/');
 $violations = $validator->validate($invalidClient);
 
-var_dump($violations->get(0)->getMessage());
-var_dump($violations->get(0)->getPropertyPath());
+echo $violations->get(0)->getMessage() . "\n";
+echo $violations->get(1)->getMessage() . "\n";
+echo $violations->get(2)->getMessage() . "\n";
 
 $entityManager->flush();
 

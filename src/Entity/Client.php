@@ -4,10 +4,12 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Validator\Constraints as AssertArtem;
 
 /**
  * @Doctrine\ORM\Mapping\Entity
  * @Doctrine\ORM\Mapping\Table(name="clients")
+ * @AssertArtem\BusinessHotelka()
  */
 class Client {
   /**
