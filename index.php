@@ -7,25 +7,59 @@ use Entity\Status;
 require_once "./vendor/autoload.php";
 require_once "./settings.php";
 
-$country = new Country();
-$country->setId('ua')
+$countryUA = new Country();
+$countryUA->setId('ua')
   ->setLabel('Ukraine');
-$entityManager->persist($country);
+$entityManager->persist($countryUA);
 
-$status = new Status();
-$status->setId('krasavchik')
+$countryDK = new Country();
+$countryDK->setId('da')
+  ->setLabel('Denmark');
+$entityManager->persist($countryDK);
+
+$statusGood = new Status();
+$statusGood->setId('krasavchik')
   ->setName('Good');
-$entityManager->persist($status);
+$entityManager->persist($statusGood);
 
-$client = new Client();
-$client->setActionDate(time())
+$statusBad = new Status();
+$statusBad->setId('ooohhh')
+  ->setName('Bad');
+$entityManager->persist($statusBad);
+
+$clientCL = new Client();
+$clientCL->setActionDate(time())
   ->setCompanyName('CoffeeLife')
-  ->setCountry($country)
-  ->setStatus($status)
+  ->setCountry($countryUA)
+  ->setStatus($statusGood)
+  ->setEmail('cl@gmail.com')
+  ->setType('?')
+  ->setUrl('http://coffeelife.com.ua/en/');
+
+$client3L = new Client();
+$client3L->setActionDate(time())
+  ->setCompanyName('Три ноги')
+  ->setCountry($countryUA)
+  ->setStatus($statusBad)
   ->setEmail('cl@gmail.com')
   ->setType('?')
   ->setUrl('http://coffeelife.com.ua/en/');
 
 $entityManager->persist($client);
+
+$clientP = new Client();
+$clientP->setActionDate(time())
+  ->setCompanyName('Papiroen')
+  ->setCountry($countryDK)
+  ->setStatus($statusGood)
+  ->setEmail('cl@gmail.com')
+  ->setType('?')
+  ->setUrl('http://coffeelife.com.ua/en/');
+
+$entityManager->persist($client);
+
+
+
+
 $entityManager->flush();
 
