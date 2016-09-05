@@ -35,7 +35,7 @@ $statusBad->setId('ooohhh')
   ->setName('Bad');
 $entityManager->persist($statusBad);
 
-
+$entityManager->flush();
 
 $clientCL = new Client();
 $clientCL->setActionDate(time())
@@ -45,6 +45,7 @@ $clientCL->setActionDate(time())
   ->setEmail('cl@gmail.com')
   ->setType('?')
   ->setUrl('http://coffeelife.com.ua/en/');
+$entityManager->persist($clientCL);
 
 $client3L = new Client();
 $client3L->setActionDate(time())
@@ -82,3 +83,10 @@ echo $violations->get(2)->getMessage() . "\n";
 
 $entityManager->flush();
 
+$clientCL = $entityManager->find(Client::class, $clientCL->getId());
+echo $clientCL->getCompanyName() . "\n";
+echo $clientCL->getCountry()->getLabel() . "\n";
+
+$clientCL = $entityManager->getRepository(Client::class)->findOneBy(['companyName' => 'CoffeeLife']);
+echo $clientCL->getCompanyName() . "\n";
+echo $clientCL->getCountry()->getLabel() . "\n";

@@ -45,7 +45,7 @@ class Client {
 
   /**
    * @var Status
-   * @ORM\OneToOne(targetEntity="Status")
+   * @ORM\ManyToOne(targetEntity="Status")
    * @ORM\JoinColumn(name="status", referencedColumnName="id")
    */
   private $status;
@@ -59,7 +59,7 @@ class Client {
 
   /**
    * @var Country
-   * @ORM\OneToOne(targetEntity="Country")
+   * @ORM\ManyToOne(targetEntity="Country")
    * @ORM\JoinColumn(name="country", referencedColumnName="id")
    */
   private $country;
