@@ -3,6 +3,8 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
+use Doctrine\ORM\Mapping\PreUpdate;
 
 /**
  * @Doctrine\ORM\Mapping\Entity
@@ -53,6 +55,15 @@ class Country {
   public function setLabel(string $label): Country {
     $this->label = $label;
     return $this;
+  }
+
+  /**
+   * @PrePersist @PreUpdate
+   */
+  public function validate() {
+    if (empty($this->label)) {
+      throw new \Exception("Label is required");
+    }
   }
 
 }

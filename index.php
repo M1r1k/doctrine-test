@@ -7,6 +7,14 @@ use Entity\Status;
 require_once "./vendor/autoload.php";
 require_once "./settings.php";
 
+try {
+  $countryUA = new Country();
+  $entityManager->persist($countryUA);
+}
+catch (\Exception $e) {
+  echo "validation was successful";
+}
+
 $countryUA = new Country();
 $countryUA->setId('ua')
   ->setLabel('Ukraine');
