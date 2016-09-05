@@ -87,6 +87,6 @@ $clientCL = $entityManager->find(Client::class, $clientCL->getId());
 echo $clientCL->getCompanyName() . "\n";
 echo $clientCL->getCountry()->getLabel() . "\n";
 
-$clientCL = $entityManager->getRepository(Client::class)->findOneBy(['companyName' => 'CoffeeLife']);
-echo $clientCL->getCompanyName() . "\n";
-echo $clientCL->getCountry()->getLabel() . "\n";
+$clients = $entityManager->getRepository(Client::class)->findBy(['country' => 'ua'], ['companyName' => 'ASC'], 2, 0);
+echo $clients[1]->getCompanyName() . "\n";
+echo $clients[1]->getCountry()->getLabel() . "\n";
