@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Validator\Constraints as AssertArtem;
 
 /**
- * @Doctrine\ORM\Mapping\Entity
+ * @Doctrine\ORM\Mapping\Entity(repositoryClass="EntityRepository\ClientRepository")
  * @Doctrine\ORM\Mapping\Table(name="clients")
  * @AssertArtem\BusinessHotelka()
  */

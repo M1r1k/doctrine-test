@@ -90,3 +90,8 @@ echo $clientCL->getCountry()->getLabel() . "\n";
 $clients = $entityManager->getRepository(Client::class)->findBy(['country' => 'ua'], ['companyName' => 'ASC'], 2, 0);
 echo $clients[1]->getCompanyName() . "\n";
 echo $clients[1]->getCountry()->getLabel() . "\n";
+
+
+$clients = $entityManager->getRepository(Client::class)->getAllGoodClientsByCountry($countryUA->getId());
+echo $clients[0]->getCompanyName() . "\n";
+echo $clients[0]->getCountry()->getLabel() . "\n";
